@@ -48,8 +48,7 @@ CHIP ALU {
     ZeroNeg(x=x, zx=zx, nx=nx, out=znx);
     ZeroNeg(x=y, zx=zy, nx=ny, out=zny);
     AddOrAnd(x=znx, y=zny, f=f, out=outa);
-    NegChip(in=outa, no=no, out=outmid);
-    NgChip(in=outmid, out=ng);
-    Eq016(in=outmid, out=zr);
-    X16(in=outmid, out=out);
+    NegChip(in=outa, no=no, out=out, out=outwork);
+    NgChip(in=outwork, out=ng);
+    Eq016(in=outwork, out=zr);
 }
