@@ -1,0 +1,30 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/01/Or.hdl
+
+/**
+ */
+
+CHIP X16 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    X(in=in[0], out=out[0]);
+    X(in=in[1], out=out[1]);
+    X(in=in[2], out=out[2]);
+    X(in=in[3], out=out[3]);
+    X(in=in[4], out=out[4]);
+    X(in=in[5], out=out[5]);
+    X(in=in[6], out=out[6]);
+    X(in=in[7], out=out[7]);
+    X(in=in[8], out=out[8]);
+    X(in=in[9], out=out[9]);
+    X(in=in[10], out=out[10]);
+    X(in=in[11], out=out[11]);
+    X(in=in[12], out=out[12]);
+    X(in=in[13], out=out[13]);
+    X(in=in[14], out=out[14]);
+    X(in=in[15], out=out[15]);
+}

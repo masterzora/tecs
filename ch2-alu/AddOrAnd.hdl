@@ -1,0 +1,23 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/02/ALU.hdl
+
+/**
+ */
+
+
+  
+CHIP AddOrAnd {
+    IN  
+        x[16], y[16],
+        f; // add or and?
+
+    OUT 
+        out[16];
+
+    PARTS:
+    Add16(a=x, b=y, out=outadd);
+    And16(a=x, b=y, out=outand);
+    Mux16(a=outand, b=outadd, sel=f, out=out);
+}

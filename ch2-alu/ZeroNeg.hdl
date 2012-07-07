@@ -1,0 +1,24 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/02/ALU.hdl
+
+/**
+ */
+
+
+  
+CHIP ZeroNeg {
+    IN  
+        x[16],
+        zx, // zero the input?
+        nx; // negate the input?
+
+    OUT 
+        out[16];
+
+    PARTS:
+    Mux16(a=x, b=false, sel=zx, out=zxout);
+    Not16(in=zxout, out=notzxout);
+    Mux16(a=zxout, b=notzxout, sel=nx, out=out);
+}

@@ -1,0 +1,23 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/02/ALU.hdl
+
+/**
+ */
+
+
+  
+CHIP Eq016 {
+    IN  
+        in[16];
+
+    OUT 
+        out;
+
+    PARTS:
+    Or8Way(in=in[0..7], out=w1);
+    Or8Way(in=in[8..15], out=w2);
+    Or(a=w1, b=w2, out=notout);
+    Not(in=notout, out=out);
+}

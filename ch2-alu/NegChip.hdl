@@ -1,0 +1,22 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/02/ALU.hdl
+
+/**
+ */
+
+
+  
+CHIP NegChip {
+    IN  
+        in[16],
+        no; // negate the input?
+
+    OUT 
+        out[16];
+
+    PARTS:
+    Not16(in=in, out=negin);
+    Mux16(a=in, b=negin, sel=no, out=out);
+}
