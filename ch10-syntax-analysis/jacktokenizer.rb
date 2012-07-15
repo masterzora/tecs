@@ -30,6 +30,11 @@ class JackTokenizer
     @current_token = @jacklines[@current_token_index]
   end
 
+  def backtrack
+    @current_token_index -= 1
+    @current_token = @jacklines[@current_token_index]
+  end
+
   def token_type
     if ['class', 'method', 'function', 'constructor', 'int', 'boolean', 'char', 'void', 'var', 'static', 'field', 'let', 'do', 'if', 'else', 'while', 'return', 'true', 'false', 'null', 'this'].include?(@current_token)
       :keyword

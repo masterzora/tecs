@@ -2,7 +2,7 @@
 #
 # Syntax Analyzer for Jack
 
-require_relative 'jacktokenizer'
+require_relative 'compilationengine'
 
 def sanitize (dirty)
   dirty.gsub('&', '&amp;').gsub('"', '&quot;').gsub('<', '&lt;').gsub('>', '&gt;')
@@ -24,25 +24,8 @@ else
 end
 
 files.each do |filename|
-  tokenizer = JackTokenizer::new(filename)
   xml_filename = filename.sub(/\.jack$/, '2.xml')
-  outfile = File.new(xml_filename, 'w')
-  outfile << "<tokens>\n"
-  while tokenizer.more_tokens?
-    tokenizer.advance
-    case tokenizer.token_type
-      when :keyword
-        outfile << "<keyword>%s</keyword>\n" % [tokenizer.keyword]
-      when :symbol
-        outfile << "<symbol>%s</symbol>\n" % [sanitize(tokenizer.symbol)]
-      when :string_const
-        outfile << "<stringConstant>%s</stringConstant>\n" % [sanitize(tokenizer.string_val)]
-      when :int_const
-        outfile << "<integerConstant>%s</integerConstant>\n" % [tokenizer.int_val]
-      when :identifier
-        outfile << "<identifier>%s</identifier>\n" % [tokenizer.identifier]
-    end
-  end
-  outfile << "</tokens>\n"
-  outfile.close
+  engine = CompilationEngine::new(filename, xml_filename)
+  p xml_filename
+  engine.compile_class
 end
