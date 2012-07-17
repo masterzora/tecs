@@ -24,8 +24,7 @@ else
 end
 
 files.each do |filename|
-  xml_filename = filename.sub(/\.jack$/, '2.xml')
-  engine = CompilationEngine::new(filename, xml_filename)
-  p xml_filename
+  vm_filename = filename.sub(/\.jack$/, '2.vm')
+  engine = CompilationEngine::new(filename, vm_filename)
   engine.compile_class
 end
